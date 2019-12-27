@@ -1,0 +1,58 @@
+<%- include ('../_layouts/admin_header.ejs') %>
+	<div class="container">
+		<h2>All Pages</h2>
+		<a href="/admin/pages/add-page" class="btn btn-primary">
+			Add Page
+		</a>
+		<br><br>
+		<table class="table sorting">
+			<thead class="thead-light">
+			<tr class="home">
+			  <th scope="col">id</th>
+			  <th scope="col">Title</th>
+			  <th scope="col">Edit</th>
+			  <th scope="col">Content</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% pages.forEach((page) => { %>
+			<tr id="id_<%= page._id %>" class="<%= page._slug %>">
+				<th scope="row"><%#= page._id %></th>
+				<td><%= page.title %></td>
+				<td>
+					<a href="admin/pages/edit-page/<%= page.slug %>" class="btn btn-primary">
+						<%#= page.slug.slice(0,20); %>
+						Edit
+					</a>
+				</td>
+				<% if (page.slug != "home") { %> 
+					<td>
+					  	<%#= page.content.slice(0,50); %>	
+					  	<a href="admin/pages/delete-page/<%= page._id %>" class="btn btn-danger">
+							Delete
+						</a>
+					</td>
+				<%} %>
+			</tr>
+			<% }); %>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+	<!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
+	<!-- <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script> -->
+	<script type="text/javascript">
+		$('tbody').sortable({
+			items: "tr:not('.home')",
+			placeholder: "ui-state-highlight",
+			update: () => 
+			{
+				var ids = $('tbody').not('.home').sortable("serialize");
+				var url = "/admin/pages/reorder-page";
+				$.post(url,ids);
+			}
+
+		});
+	</script>
+<%- include ('../_layouts/admin_footer.ejs') %>
