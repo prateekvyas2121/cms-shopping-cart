@@ -31,6 +31,25 @@ router.get('/add-page',(req,res) => {
 	});
 });
 
+/*
+GET edit page
+*/
+
+router.get('/edit-page/:slug',(req,res) => {
+	// res.send(req.params);
+	// console.log(req.params);
+	page = Page.findOne({slug:req.params.slug},(error,page) => {
+		// res.send(page);
+		res.render("admin/add_page",{
+			title:page.title,
+			slug:page.slug,
+			content:page.content
+		});
+	})
+	
+	
+});
+
 
 /*
 POST add page

@@ -1,3 +1,4 @@
+<%= content %>
 <%- include ('../_layouts/admin_header.ejs') %>
 	<div class="container">
 		<h2>add page</h2>
@@ -26,7 +27,7 @@
 			<div class="form-group">
 				<label for="Content">Content</label>
 				<!-- <input type="text" class="form-control" name="content" value="<%#= content %>" placeholder="Content"> -->
-				<textarea class="form-control" name="content" value="<%= content %>" placeholder="Content"></textarea>
+				<textarea class="form-control" name="content" value="<%= content %>" placeholder="Content"><%= content %></textarea>
 			</div>
 
 			<button type="submit" class="btn btn-success pull-right">Submit</button>
