@@ -8,16 +8,16 @@
 		<table class="table sorting">
 			<thead class="thead-light">
 			<tr class="home">
-			  <th scope="col">id</th>
+			  <!-- <th scope="col">id</th> -->
 			  <th scope="col">Title</th>
 			  <th scope="col">Edit</th>
-			  <th scope="col">Content</th>
+			  <th scope="col">Delete</th>
 			</tr>
 			</thead>
 			<tbody>
 			<% pages.forEach((page) => { %>
 			<tr id="id_<%= page._id %>" class="<%= page._slug %>">
-				<th scope="row"><%#= page._id %></th>
+				<!-- <th scope="row"><%#= page._id %></th> -->
 				<td><%= page.title %></td>
 				<td>
 					<a href="/admin/pages/edit-page/<%= page.slug %>" class="btn btn-primary">
@@ -28,7 +28,7 @@
 				<% if (page.slug != "home") { %> 
 					<td>
 					  	<%#= page.content.slice(0,50); %>	
-					  	<a href="admin/pages/delete-page/<%= page._id %>" class="btn btn-danger">
+					  	<a href="/admin/pages/delete-page/<%= page._id %>" class="btn btn-danger">
 							Delete
 						</a>
 					</td>
