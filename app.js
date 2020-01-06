@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path')
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const session = require('express-session')
+const session = require('express-session');
+var flash = require('connect-flash');
 const expressValidator = require('express-validator');
 //initialize app 
 const app = express();
@@ -65,7 +66,6 @@ app.use(expressValidator({
 }));
 //set global errors variable 
 app.locals.errors = null;
-
 //express messages middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {

@@ -5,6 +5,11 @@
 			Add Page
 		</a>
 		<br><br>
+		<% if(typeof message !== 'undefined' && message !== null  && message !== ""){ %>
+				<div class="alert alert-danger">
+					<%= message %>
+				</div>
+			<%}%>
 		<table class="table sorting">
 			<thead class="thead-light">
 			<tr class="home">

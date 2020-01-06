@@ -17,7 +17,7 @@ if(slug){
 		</a>
 		<br><br>
 		<form action="/admin/pages/<%= isEditable %>-page/<%= slug %>" method="post" >
-			<% if(typeof message !== 'undefined' && message !== null){ %>
+			<% if(typeof message !== 'undefined' && message !== null  && message !== ""){ %>
 				<div class="alert alert-danger">
 					<%= message %>
 				</div>

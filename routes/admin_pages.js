@@ -29,7 +29,7 @@ router.get('/delete-page/:id',(req,res) => {
 				console.log(error);
 
 			}else{
-				res.redirect('/admin/pages')
+				res.redirect('/admin/pages');
 				req.flash('success',"Page deleted successfully!")
 
 				console.log("page deleted successfully")
