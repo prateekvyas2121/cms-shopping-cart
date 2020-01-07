@@ -1,0 +1,42 @@
+<% 
+if(slug){
+	var add_edit = "edit";
+	var slug = slug;
+}else{
+	var add_edit = "add";
+	var slug = '';
+
+}
+
+ %>
+<%= id %>
+<%- include ('../_layouts/admin_header.ejs') %>
+	<div class="container">
+		<h2 style="text-transform: capitalize;"><%= add_edit %> category</h2>
+		<a href="/admin/categories" class="btn btn-primary">
+			Back to all categories
+		</a>
+		<br><br>
+		<form action="/admin/categories/<%= add_edit %>-category/<%= slug %>" method="post" >
+			<% if(typeof message !== 'undefined' && message !== null  && message !== ""){ %>
+				<div class="alert alert-danger">
+					<%= message %>
+				</div>
+			<%}%>
+			<div class="form-group">
+				<label for="Title">Title</label>
+				<input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+			</div>
+
+			<div class="form-group">
+				<label for="Slug">Slug</label>
+				<input type="text" class="form-control" name="slug" value="<%= slug %>" placeholder="Slug">
+			</div>
+
+			<% if(slug) { %>
+				<input type="text" name="id" value="<%= id %>">
+			<% } %>
+			<button type="submit" class="btn btn-success pull-right">Submit</button>
+		</form>
+	</div>
+<%- include ('../_layouts/admin_footer.ejs') %>

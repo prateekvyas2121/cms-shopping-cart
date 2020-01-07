@@ -78,8 +78,12 @@ const pages = require('./routes/pages.js');
 app.use('/',pages);
 
 //setup admin routes
-const admin_pages = require('./routes/admin_pages.js');
-app.use('/admin/pages',admin_pages);
+	// admin pages routes
+	const admin_pages = require('./routes/admin_pages.js');
+	app.use('/admin/pages',admin_pages);
+	//admin categories routes
+	const admin_categories = require('./routes/admin_categories.js');
+	app.use('/admin/categories',admin_categories);
 
 //START THE SERVER
 const PORT = 3000;

@@ -1,0 +1,48 @@
+<%- include ('../_layouts/admin_header.ejs') %>
+	<div class="container">
+		<h2>All Categories</h2>
+		<a href="/admin/categories/add-category" class="btn btn-primary">
+			Add Category
+		</a>
+		<br><br>
+		<% if(typeof message !== 'undefined' && message !== null  && message !== ""){ %>
+				<div class="alert alert-danger">
+					<%= message %>
+				</div>
+			<%}%>
+		<table class="table sorting">
+			<thead class="thead-light">
+			<tr>
+			  <!-- <th scope="col">id</th> -->
+			  <th scope="col">Category</th>
+			  <th scope="col">Edit</th>
+			  <th scope="col">Delete</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% categories.forEach((category) => { %>
+				<tr>
+					<!-- <th scope="row"><%#= category._id %></th> -->
+					<td><%= category.title %></td>
+					<td>
+						<a href="/admin/categories/edit-category/<%= category.slug %>" class="btn btn-primary">
+							Edit
+						</a>
+					</td>
+					<td>
+					  	<a href="/admin/categories/delete-category/<%= category._id %>" class="confirmDeletion btn btn-danger">
+							Delete
+						</a>
+					</td>
+				</tr>
+			<% }); %>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
+	<!-- <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script> -->
+	<script type="text/javascript">
+		
+	</script>
+<%- include ('../_layouts/admin_footer.ejs') %>
